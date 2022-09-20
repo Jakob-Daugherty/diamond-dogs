@@ -123,6 +123,7 @@ resource "aws_instance" "diamond_dogs" {
   associate_public_ip_address = true
   subnet_id                   = aws_subnet.diamond_dogs.id
   vpc_security_group_ids      = [aws_security_group.diamond_dogs.id]
+  user_data_replace_on_change = true
 
   user_data = templatefile("${path.module}/files/deploy_app.sh", {
     placeholder = var.placeholder
